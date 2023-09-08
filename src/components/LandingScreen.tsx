@@ -1,4 +1,5 @@
-import { Dispatch, FC, SetStateAction, useState } from 'react';
+'use client';
+import { useState } from 'react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -31,8 +32,12 @@ const LandingScreen = () => {
     return (
         <div
             className={cn(
-                'px-5 py-4 absolute h-full w-full z-150 flex flex-col justify-between items-center ',
-                `bg-adel-${screenNumber.toString()}`
+                'px-5 py-4 absolute h-full w-full z-150 flex flex-col justify-between items-center',
+                {
+                    'bg-adel-1': screenNumber === 1,
+                    'bg-adel-2': screenNumber === 2,
+                    'bg-adel-3': screenNumber === 3,
+                }
             )}
         >
             <Image src={img[screenNumber - 1]} alt="screen picture" />
@@ -44,7 +49,7 @@ const LandingScreen = () => {
                 variant="outline"
                 size="lg"
                 onClick={onCkipClick}
-                className="bg-transparent border-black border-2 text-lg"
+                className="bg-transparent border-black border-2 text-lg active:bg-transparent focus:bg-transparent"
             >
                 Skip
             </Button>
