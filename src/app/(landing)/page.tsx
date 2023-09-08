@@ -16,7 +16,8 @@ const LandingPage = () => {
 
     useEffect(() => {
         if (isSignedIn) {
-            setCount((prev) => prev + 1);
+            // setCount((prev) => prev + 1);
+            setCount(1);
         }
     }, [isSignedIn]);
 
