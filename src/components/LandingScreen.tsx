@@ -45,14 +45,26 @@ const LandingScreen = () => {
                 {titles[screenNumber - 1]}
             </h2>
             <p className=" text-slate-800">{describtions[screenNumber - 1]}</p>
-            <Button
-                variant="outline"
-                size="lg"
-                onClick={onCkipClick}
-                className="bg-transparent border-black border-2 text-lg active:bg-transparent focus:bg-transparent"
-            >
-                Skip
-            </Button>
+            <div>
+                <div className="flex justify-center items-center gap-6">
+                    {Array.from({ length: 3 }).map((_, i) => (
+                        <span
+                            key={i}
+                            className={cn('h-2 w-2 rounded-full bg-slate-500', {
+                                'bg-black': screenNumber === i + 1,
+                            })}
+                        ></span>
+                    ))}
+                </div>
+                <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={onCkipClick}
+                    className="my-8 bg-transparent border-black border-2 text-lg active:bg-transparent focus:bg-transparent"
+                >
+                    Skip
+                </Button>
+            </div>
         </div>
     );
 };
