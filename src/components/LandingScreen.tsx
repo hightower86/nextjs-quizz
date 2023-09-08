@@ -6,10 +6,6 @@ import scr1 from '../../public/screen_1.png';
 import scr2 from '../../public/screen_2.png';
 import scr3 from '../../public/screen_3.png';
 
-interface LandingScreenProps {
-    count: number;
-}
-
 const titles = [
     '1. This is the first step of our app',
     '2. This is the second step of our app',
@@ -22,16 +18,21 @@ const describtions = [
 ];
 const img = [scr1, scr2, scr3];
 
-const LandingScreen: FC<LandingScreenProps> = ({ count }) => {
-    const [screenNumber, setScreenNumber] = useState(count);
+const LandingScreen = () => {
+    const [screenNumber, setScreenNumber] = useState(1);
 
     if (screenNumber > 3) return null;
 
+    const onCkipClick = () => {
+        setScreenNumber((prev) => prev + 1);
+    };
+
+    console.log({ screenNumber });
     return (
         <div
             className={cn(
                 'px-5 py-4 absolute h-full w-full z-150 flex flex-col justify-between items-center ',
-                `bg-adel-${screenNumber}`
+                `bg-adel-${screenNumber.toString()}`
             )}
         >
             <Image src={img[screenNumber - 1]} alt="screen picture" />
@@ -42,8 +43,8 @@ const LandingScreen: FC<LandingScreenProps> = ({ count }) => {
             <Button
                 variant="outline"
                 size="lg"
-                onClick={() => setScreenNumber((prev) => prev + 1)}
-                className="bg-transparent  border-black border-2 text-lg"
+                onClick={onCkipClick}
+                className="bg-transparent border-black border-2 text-lg"
             >
                 Skip
             </Button>

@@ -40,7 +40,7 @@ const LandingPage = () => {
         <div className="w-full md:w-[540px] mx-auto bg-slate-300 h-full flex flex-col justify-evenly items-center px-2 relative">
             <h1 className="text-5xl">Hello World</h1>
             <UserButton afterSignOutUrl="/" />
-            {count === 1 && <LandingScreen count={count} />}
+            {count === 1 && <LandingScreen />}
         </div>
     );
 };
